@@ -1,0 +1,2 @@
+include src/HARPS_DL/datasets/*.json
+include src/HARPS_DL/datasets/*.yaml
