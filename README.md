@@ -1,25 +1,46 @@
-# spectra_DL
+# HARPS-ML-Spectra
 Spectra research code (learning, inference, tests).
 
-# setup instructions
-- Run The script setup_env.sh to setup virtual environment 'replicate_env' that replicates environment used during development.
-- Add project folder to the environment variable PYTHONPATH, by adding this line to .bashrc:
-    ./setup_env.sh
-    export PYTHONPATH=$PYTHONPATH:{path_to_project}/HARPS-ML-Spectra
-- 
+This repository contains the companion code for the paper ["Stellar parameter prediction and spectral simulation using machine learning"](https://arxiv.org/abs/2412.09002) by Cvrček et al.
 
-# container instructions
-We provide instructions to set up a container that we used to training and testing our models.
-With this container, it is possible to run our demo code and learn or fine-tune our models.
+## Setup Instructions
+To set up this project on your machine, follow these steps:
 
-- install apptainer according to these instructions https://apptainer.org/docs/user/latest/quick_start.html#installation
-- cd container
-- apptainer build --fakeroot spectra_container.sif spectra_container.def
+1. Make sure you have Python 3.10 installed on your system.
 
-The code can be executed as follows:
-apptainer exec --nv spectra_container.sif python3.10 script.py
+2. Run the setup script to create a virtual environment and install dependencies:
+   ```bash
+   ./HARPS_DL_env.sh
+   ```
+   This will:
+   - Create a virtual environment called 'replicated_env'
+   - Activate the environment
+   - Install the package in development mode with all dependencies
 
-Alternatively, one can set up virtual environment that is described in the container/spectra_container.def.
-Which is sufficient to run the models on CPU.
+3. Add the project folder to your PYTHONPATH by adding this line to your .bashrc file:
+   ```bash
+   export PYTHONPATH=$PYTHONPATH:/full/path/to/HARPS-ML-Spectra
+   ```
+   Replace `/full/path/to` with the actual path to where you cloned this repository.
 
-# 
+4. When working with the project, activate the virtual environment:
+   ```bash
+   source replicated_env/bin/activate
+   ```
+
+## Running the Code
+After setup, you can run the demo notebooks in the `demo_notebooks` directory to see examples of:
+- Label prediction
+- Spectra reconstruction
+
+## Project Structure
+- `src/` - Source code for the HARPS_DL package
+- `demo_notebooks/` - Jupyter notebooks demonstrating usage
+- `models/` - Pre-trained models
+
+## References
+This project is the companion code to:
+- Cvrček, V., Romaniello, M., Šára, R., Freudling, W., & Ballester, P. (2024). "Stellar parameter prediction and spectral simulation using machine learning". [arXiv:2412.09002](https://arxiv.org/abs/2412.09002)
+
+The CNN models in this work are based on the design described in:
+- Sedaghat, N., et al. (2021). "Machines Learn to Infer Stellar Parameters Just by Looking at a Large Number of Spectra." The Astrophysical Journal, 908(2), 217. [arXiv:2009.12872](https://arxiv.org/abs/2009.12872)
